@@ -9,10 +9,11 @@ router.post("/login", passport.authenticate("local"), (req, res, next) => {
   res.status(200).json({ success: true, token, user: req.user });
 });
 
-router.post("/userinfopost", verifyUser, (req, res, next) => {
-  User.updateOne(
+router.post("/userinfopost", verifyUser, async (req, res, next) => {
+  console.log(req.body);
+  await User.findOneAndUpdate(
     { _id: req.user._id },
-    { $push: { typingmatches: req.body.matchdetails } },
+    { $push: { typingmatches: req.body.typingmatches } },
     (err, resp) => {
       if (err) res.send({ success: false });
       else res.send({ success: true });
