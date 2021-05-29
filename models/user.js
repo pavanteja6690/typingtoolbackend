@@ -10,6 +10,10 @@ const UserSchema = new mongoose.Schema({
   },
   typingmatches: [
     {
+      _id: {
+        type: Number,
+        unique: true,
+      },
       wpm: {
         type: Number,
         required: true,
