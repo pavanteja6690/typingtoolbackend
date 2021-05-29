@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
   typingmatches: [
     {
       _id: {
-        type: Number,
+        type: mongoose.Types.ObjectId,
         unique: true,
       },
       wpm: {
